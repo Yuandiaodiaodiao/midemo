@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             this.webView = webView;
         }
 
-        @JavascriptInterface
+        @JavascriptInterface //声明的才会被调用 防止任意代码执行
         public void say(String content) {
             //收到say
             Toast.makeText(getApplicationContext(), "js say=" + content, Toast.LENGTH_SHORT).show();
