@@ -1,17 +1,15 @@
-function buttonCall(){
+function buttonCall() {
 
-    // var button=document.getElementById("button1")
-    // button.innerHTML=button.innerHTML+"1"
-    var a=document.getElementById("input1").value;  
-    
-    var data=a;
-    window.WebViewJavascriptBridge.callHandler(
-        'submitFromWeb'
-        ,data
-        , function(responseData) {
-            bridgeLog('来自Java的回传数据： ' + responseData);
-        }
-    );
-    
+    var a = document.getElementById("input1").value;
+
+    var frameDiv = document.createElement("iframe");//创建一个标签
+    var message = {"text": a}
+    frameDiv.setAttribute('style','width: 0px; height: 0px;');
+    frameDiv.src = "xyz://" + JSON.stringify(message)
+    var bodyFa = document.getElementById("container1");
+    bodyFa.appendChild(frameDiv);
+    setTimeout(()=>{bodyFa.removeChild(frameDiv)},100)
+
+
 
 }
